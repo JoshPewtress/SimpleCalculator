@@ -1,7 +1,5 @@
 ﻿try
 {
-    bool goAgain = false;
-
     Console.WriteLine(
         """
         Simple Calculator Application
@@ -14,16 +12,8 @@
     do
     {
         Console.Write("\nEnter the equation: ");
-        Console.WriteLine($"The answer is: {Calculate(SplitInput(Console.ReadLine()))}.");
-
-        Console.Write("\nContinue (Y\\N): ");
-        string input = Console.ReadLine();
-        if (input.Trim().ToUpper() == "Y")
-        {
-            goAgain = true;
-        }
-
-    } while (goAgain);
+        Console.WriteLine($"The answer is: {Calculate(SplitInput(Console.ReadLine()))}."); 
+    } while (ContinueUsing());
 }
 catch (Exception e)
 {
@@ -111,5 +101,21 @@ char ConvertOperator(string operation)
             return '/';
         default:
             throw new InvalidOperationException($"\"{operation}\" is not a proper operand.");
+    }
+}
+
+bool ContinueUsing()
+{
+    bool output;
+
+    Console.Write("\nContinue (Y\\N): ");
+    string input = Console.ReadLine();
+    if (input.Trim().ToUpper() == "Y")
+    {
+        return output = true;
+    }
+    else
+    {
+        return output = false;
     }
 }
