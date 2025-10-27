@@ -1,4 +1,35 @@
-﻿
+﻿try
+{
+    bool goAgain = false;
+
+    Console.WriteLine(
+        """
+        Simple Calculator Application
+
+        Enter the math equation you would like solved, the format is:
+        number,operand,number. ex: 2,/,3,+,5
+        """
+    );
+
+    do
+    {
+        Console.Write("\nEnter the equation: ");
+        Console.WriteLine($"The answer is: {Calculate(SplitInput(Console.ReadLine()))}.");
+
+        Console.Write("\nContinue (Y\\N): ");
+        string input = Console.ReadLine();
+        if (input.Trim().ToUpper() == "Y")
+        {
+            goAgain = true;
+        }
+
+    } while (goAgain);
+}
+catch (Exception e)
+{
+    Console.WriteLine();
+    throw;
+}
 
 List<string> SplitInput(string input)
 {
